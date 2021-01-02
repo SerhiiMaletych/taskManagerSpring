@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import taskManagerSpring.taskManagerSpring.model.Status;
 import taskManagerSpring.taskManagerSpring.model.Task;
 import taskManagerSpring.taskManagerSpring.service.TaskService;
 
@@ -27,8 +28,9 @@ public class MainController {
 
     }
     @PostMapping("task-create")
-    public String createTask(Task task){
+    public String createTask(Task task, Model model){
         taskService.saveTask(task);
+        model.addAttribute("status", Status.values());
         return "redirect:/";
     }
 
