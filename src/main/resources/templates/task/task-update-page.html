@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<title>Update task</title>
+
+</head>
+<body>
+
+<form action="#" th:action="@{/task-update}" th:object="${task}" method="post">
+    <label for="id"> id</label>
+    <input type="text" th:field="*{id}" id="id" placeholder=" id"> <br>
+    <label for="text"> text</label>
+    <input type="text" th:field="*{text}" id="text"  placeholder=" text"> <br>
+
+    <input type="submit"  value="Update your task">
+</form>
+
+
+</body>
+</html>
+

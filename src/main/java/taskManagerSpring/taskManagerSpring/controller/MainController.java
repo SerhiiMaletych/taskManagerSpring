@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import taskManagerSpring.taskManagerSpring.model.Task;
 import taskManagerSpring.taskManagerSpring.service.TaskService;
 
@@ -19,10 +20,15 @@ public class MainController {
         this.taskService = taskService;
     }
 
+    @RequestMapping("/")
+    public String mainPage() {
+        return "index";
+    }
+
 
     @GetMapping("task-create")
     public String createForm(Task task) {
-        return "task-create-page";
+        return "task/task-create-page";
 
     }
     @PostMapping("task-create")
@@ -42,14 +48,14 @@ public class MainController {
     public String updateTaskForm(@PathVariable("id") Long id, Model model) throws Exception {
         Task task = taskService.findById(id);
         model.addAttribute("task", task);
-        return "task-update-page";
+        return "task/task-update-page";
     }
 
     @GetMapping("/tasks")
     public String findAllTasks(Model model) {
         List<Task> task = taskService.findAll();
         model.addAttribute("task", task);
-        return "task-list-page";
+        return "task/task-list-page";
 
     }
 
