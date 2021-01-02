@@ -1,6 +1,7 @@
 package taskManagerSpring.taskManagerSpring.service;
 
 import org.springframework.stereotype.Service;
+import taskManagerSpring.taskManagerSpring.model.Status;
 import taskManagerSpring.taskManagerSpring.model.Task;
 import taskManagerSpring.taskManagerSpring.repository.TaskRepository;
 
@@ -23,7 +24,12 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    public Task saveTask(Task task) {
+    public Task createTask(Task task) {
+        task.setStatus(Status.IN_PROGRESS);
+        return taskRepository.save(task);
+    }
+
+    public Task updateTask(Task task) {
         return taskRepository.save(task);
     }
 

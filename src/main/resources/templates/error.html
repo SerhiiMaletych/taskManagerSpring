@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+
+</head>
+
+<body>
+
+    <div  >
+        <ul >
+            <li ><h3 th:text="${error}">Status</h3></li>
+            <li  th:text="'Status code: '+ ${status}"></li>
+        </ul>
+
+        <a href="/"><input type="button" value="Main page"/></a>
+    </div>
+
+
+</body>
+</html>

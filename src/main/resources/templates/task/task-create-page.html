@@ -17,16 +17,8 @@
     <h2>Create task</h2>
     <form action="#" th:action="@{/task-create}" th:object="${task}" method="post">
 
-
+        <label > text</label>
         <input type="text" th:field="*{text}" placeholder=" text"> <br>
-        <label > status</label>
-        <select th:field="*{status}">
-            <option th:value="'DONE'" th:text="DONE"></option>
-            <option th:value="'IN_PROGRESS'" th:text="IN_PROGRESS"></option>
-            <option th:value="'FAILED'" th:text="FAILED"></option>
-
-        </select>
-
 
         <input type="submit" id="submit" class="btn btn-success " value="create task">
 

@@ -29,20 +29,20 @@ public class MainController {
     }
     @PostMapping("task-create")
     public String createTask(Task task, Model model){
-        taskService.saveTask(task);
+        taskService.createTask(task);
         model.addAttribute("status", Status.values());
         return "redirect:/";
     }
 
     @PostMapping("/task-update")
     public String updateTask(Task task) {
-        taskService.saveTask(task);
+        taskService.updateTask(task);
         return "redirect:/";
     }
 
 
     @GetMapping("/task-update/{id}")
-    public String updateTaskForm(@PathVariable("id") Long id, Model model) throws Exception {
+    public String updateTaskForm(@PathVariable("id") Long id, Model model) {
         Task task = taskService.findById(id);
         model.addAttribute("task", task);
         return "task/task-update-page";
