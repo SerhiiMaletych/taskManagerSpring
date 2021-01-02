@@ -1,10 +1,12 @@
 package taskManagerSpring.taskManagerSpring.service;
 
+import org.springframework.stereotype.Service;
 import taskManagerSpring.taskManagerSpring.model.Task;
 import taskManagerSpring.taskManagerSpring.repository.TaskRepository;
 
 import java.util.List;
 
+@Service
 public class TaskService {
 
     private final TaskRepository taskRepository;
@@ -25,7 +27,7 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    public void deleteTask(Long id) {
+    public void deleteById(Long id) {
         taskRepository.deleteById(id);
     }
 
