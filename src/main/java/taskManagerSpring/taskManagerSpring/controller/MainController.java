@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import taskManagerSpring.taskManagerSpring.model.Task;
 import taskManagerSpring.taskManagerSpring.service.TaskService;
 
@@ -20,10 +19,6 @@ public class MainController {
         this.taskService = taskService;
     }
 
-    @RequestMapping("/")
-    public String mainPage() {
-        return "index";
-    }
 
 
     @GetMapping("task-create")
@@ -51,7 +46,7 @@ public class MainController {
         return "task/task-update-page";
     }
 
-    @GetMapping("/tasks")
+    @GetMapping("/")
     public String findAllTasks(Model model) {
         List<Task> task = taskService.findAll();
         model.addAttribute("task", task);

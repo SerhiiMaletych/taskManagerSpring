@@ -21,4 +21,5 @@ public class Task {
     private Long id;
     @Column(name = "text")
     private String text;
+    private Status status;
 }
