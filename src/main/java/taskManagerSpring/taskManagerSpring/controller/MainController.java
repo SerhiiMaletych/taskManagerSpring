@@ -2,24 +2,28 @@ package taskManagerSpring.taskManagerSpring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import taskManagerSpring.taskManagerSpring.model.Status;
 import taskManagerSpring.taskManagerSpring.model.Task;
+import taskManagerSpring.taskManagerSpring.repository.TaskRepository;
 import taskManagerSpring.taskManagerSpring.service.TaskService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
 public class MainController {
 
        private final TaskService taskService;
+       private final TaskRepository taskRepository;
 
-    public MainController(TaskService taskService) {
+    public MainController(TaskService taskService, TaskRepository taskRepository) {
         this.taskService = taskService;
+        this.taskRepository = taskRepository;
     }
-
 
 
     @GetMapping("task-create")
@@ -34,19 +38,26 @@ public class MainController {
         return "redirect:/";
     }
 
-    @PostMapping("/task-update")
-    public String updateTask(Task task) {
-        taskService.updateTask(task);
-        return "redirect:/";
-    }
-
 
     @GetMapping("/task-update/{id}")
     public String updateTaskForm(@PathVariable("id") Long id, Model model) {
-        Task task = taskService.findById(id);
+        Task task = taskRepository.findById(id).
+                orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         model.addAttribute("task", task);
         return "task/task-update-page";
     }
+
+    @PostMapping("/task-update/{id}")
+    public String updateUser(@PathVariable("id") long id, @Valid Task task, BindingResult result, Model model) {
+     if (result.hasErrors()) {
+        task.setId(id);
+        return "task/task-update-page";
+    }
+
+    taskRepository.save(task);
+
+    return "redirect:/";
+}
 
     @GetMapping("/")
     public String findAllTasks(Model model) {
@@ -59,7 +70,9 @@ public class MainController {
 
     @GetMapping("/task-delete/{id}")
     public String deleteTask(@PathVariable("id") Long id) {
-        taskService.deleteById(id);
+        Task task = taskRepository.findById(id).
+                orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        taskRepository.delete(task);
         return "redirect:/";
     }
 

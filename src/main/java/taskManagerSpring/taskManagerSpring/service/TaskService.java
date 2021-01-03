@@ -16,9 +16,6 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public Task findById(Long id) {
-        return taskRepository.getOne(id);
-    }
 
     public List<Task> findAll() {
         return taskRepository.findAll();
@@ -27,14 +24,6 @@ public class TaskService {
     public Task createTask(Task task) {
         task.setStatus(Status.IN_PROGRESS);
         return taskRepository.save(task);
-    }
-
-    public Task updateTask(Task task) {
-        return taskRepository.save(task);
-    }
-
-    public void deleteById(Long id) {
-        taskRepository.deleteById(id);
     }
 
 

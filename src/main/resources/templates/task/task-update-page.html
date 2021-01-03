@@ -12,9 +12,8 @@
 </head>
 <body>
 
-<form action="#" th:action="@{/task-update}" th:object="${task}" method="post">
+<form action="#" th:action="@{/task-update/{id}(id=${task.id})}" th:object="${task}" method="post">
     <input type="text" th:field="*{title}" id="title"  placeholder=" title"> <br>
-
     <input type="text" th:field="*{text}" id="text"  placeholder=" text"> <br>
 
     <label > status</label>
