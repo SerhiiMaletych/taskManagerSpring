@@ -16,9 +16,19 @@
 <div>
     <h2>Create task</h2>
     <form action="#" th:action="@{/task-create}" th:object="${task}" method="post">
-
-        <label > text</label>
+        <input type="text" th:field="*{title}" placeholder=" title"> <br>
         <input type="text" th:field="*{text}" placeholder=" text"> <br>
+
+        <label > expired</label>
+        <select th:field="*{expired}">
+            <option th:value="'HOURS_6'" th:text="HOURS_6"></option>
+            <option th:value="'HOURS_12'" th:text="HOURS_12"></option>
+            <option th:value="'ONE_DAY'" th:text="ONE_DAY"></option>
+            <option th:value="'TWO_DAYS'" th:text="TWO_DAYS"></option>
+            <option th:value="'ONE_WEEK'" th:text="ONE_WEEK"></option>
+            <option th:value="'ONE_MONTH'" th:text="ONE_MONTH"></option>
+
+        </select>
 
         <input type="submit" id="submit" class="btn btn-success " value="create task">
 
