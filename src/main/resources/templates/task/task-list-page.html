@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Tasks</title>
+    <link rel="stylesheet" type="text/css" href="/css/main_page.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
@@ -14,42 +15,28 @@
 </head>
 <body>
 
+<h2>Tasks</h2>
+<p><a href="/task-create" class="btn btn-primary">Create new task</a></p>
 
-    <div >
-        <h2>Tasks</h2>
-        <table>
-            <thead>
-            <tr>
+<div class="main-container">
+<div th:each="task:${task}" class="task ">
 
-                <th>id</th>
-                <th>title</th>
-                <th>text</th>
-                <th>status</th>
-                <th>expired</th>
-
-
-
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="task: ${task}">
-                <td th:text="${task.id}"></td>
-                <td th:text="${task.title}"></td>
-                <td th:text="${task.text}"></td>
-                <td th:text="${task.status}"></td>
-                <td th:text="${task.expired}"></td>
+            <span th:text="${task.title}"></span>
+            <span th:text="${task.text}"></span>
+            <span th:text="${task.status}"></span>
+            <span th:text="${task.expired}"></span>
+            <a th:href="@{task-update/{id}(id=${task.id})}" class="btn btn-primary">Edit</a>
+            <a th:href="@{task-delete/{id}(id=${task.id})}" class="btn btn-danger">Delete</a>
 
 
-                <td><a th:href="@{task-update/{id}(id=${task.id})}" class="btn btn-primary">Edit</a></td>
-                <td><a th:href="@{task-delete/{id}(id=${task.id})}" class="btn btn-danger">Delete</a></td>
+</div>
 
-                </td>
+</div>
 
-            </tr>
-            </tbody>
-        </table>
-        <p><a href="/task-create" class="btn btn-primary">Create new task</a></p>
-    </div>
+
+
+
+
 
 
 </body>

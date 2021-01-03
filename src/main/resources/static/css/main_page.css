@@ -1,0 +1,12 @@
+.main-container{
+    width: 100%;
+    height: 300px;
+    border: 2px solid green;
+}
+
+.task{
+    width: 20%;
+    height: 300px;
+    border: 1px red solid ;
+    float: left;
+}
