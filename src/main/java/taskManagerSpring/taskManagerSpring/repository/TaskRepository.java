@@ -13,6 +13,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query(value= "SELECT * FROM task WHERE expired ='DONE'", nativeQuery = true)
     String findAllDone();
 
-    @Query(value= "SELECT * FROM task WHERE expired ='FAILED'", nativeQuery = true)
+        @Query(value= "SELECT * FROM task WHERE expired = 'FAILED'", nativeQuery = true)
     String findAllFailed();
 }
