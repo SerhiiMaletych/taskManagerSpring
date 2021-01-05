@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>All done tasks</title>
+    <link rel="stylesheet" type="text/css" href="css/main_page.css">
+</head>
+<body>
+<div class="main-container" >
+    <div th:each="task:${task}" class="task ">
+
+        <p th:text="${task.title}" ></p><br>
+        <p th:text="${task.status}"></p><br>
+        <p th:text="${task.expired}"></p><br>
+        <p th:text="${task.text}" class="text"></p><br>
+        <footer>
+            <div class="button-div">
+                <a th:href="@{task-delete/{id}(id=${task.id})}" class="btn btn-danger ">Delete</a>
+
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+</body>
+</html>

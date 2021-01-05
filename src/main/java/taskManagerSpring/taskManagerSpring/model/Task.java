@@ -1,25 +1,34 @@
 package taskManagerSpring.taskManagerSpring.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import javax.validation.constraints.Size;
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
+
+
 @Table(name = "task")
 public class Task {
 
+    public Task() {
+    }
+    public Task(Long id, String title, @Size(min = 2, max = 200) String text, Status status, Expired expired) {
+        this.id = id;
+        this.title = title;
+        this.text = text;
+        this.status = status;
+        this.expired = expired;
+    }
+
+    public Task(String title) {
+        this.title = title;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -77,4 +86,7 @@ public class Task {
     public void setExpired(Expired expired) {
         this.expired = expired;
     }
+
+
 }
+
