@@ -6,7 +6,7 @@
 
 .task{
     width: 20%;
-    height: 500px;
+    height: auto;
     border: 1px red solid ;
     float: left;
 
@@ -14,18 +14,29 @@
 
 .text {
     padding: 5px;
-    border-top: 1px solid red;
     text-align: justify;
     height: 350px;
+    border-top: 1px solid red;
 }
 
-.button-div {
-    position: absolute;
-       width: 20%;
-}
-
-p {
+.top-text {
     text-align: center;
-    margin: 0;
+    margin: 3px 0 0;
     padding: 0;
+    line-height: 3px;
+}
+.title {
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+
+.button-create{
+
+}
+.button-edit{
+    margin-left: 168px;
+
+}
+.button-delete {
+    margin-left: 1px;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Tasks</title>
@@ -11,25 +11,21 @@
 <body>
 
 <h2>Tasks</h2>
-<a href="/task-create" class="btn btn-primary">Create new task</a>
+<button><a href="/task-create" >Create new task</a></button>
 
 
 <div class="main-container" >
     <div th:each="task:${task}" class="task ">
 
-        <p th:text="${task.title}" ></p><br>
-        <p th:text="${task.status}"></p><br>
-        <p th:text="${task.expired}"></p><br>
+        <p th:text="${task.title} "class="top-text title"  ></p>
+        <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}" >Edit</a></button>
+        <button class="button-delete"><a th:href="@{task-delete/{id}(id=${task.id})}" >Delete</a></button>
+        <p th:text="${task.status}" class="top-text" style="margin-top: 10px"></p><br>
+        <p th:text="${task.expired}" class="top-text"></p><br>
+
         <p th:text="${task.text}" class="text"></p><br>
-<footer>
-        <div class="button-div">
-        <a th:href="@{task-update/{id}(id=${task.id})}" class="btn btn-primary ">Edit</a>
-        <a th:href="@{task-delete/{id}(id=${task.id})}" class="btn btn-danger ">Delete</a>
 
-        </div>
-</footer>
     </div>
-
 </div>
 
 
