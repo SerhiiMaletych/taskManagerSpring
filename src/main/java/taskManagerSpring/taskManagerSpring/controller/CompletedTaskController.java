@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import taskManagerSpring.taskManagerSpring.repository.TaskRepository;
 
 @Controller
-public class DoneTaskController {
+public class CompletedTaskController {
 
     private final TaskRepository taskRepository;
 
-    public DoneTaskController(TaskRepository taskRepository) {
+    public CompletedTaskController(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
         @GetMapping("/done-tasks")
