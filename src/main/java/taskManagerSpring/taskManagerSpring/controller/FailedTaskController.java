@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import taskManagerSpring.taskManagerSpring.repository.TaskRepository;
 
-@RestController
+@Controller
 public class FailedTaskController {
     private final TaskRepository taskRepository;
 

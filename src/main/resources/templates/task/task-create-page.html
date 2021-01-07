@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <title>Create task</title>
 
-
+    <link rel="stylesheet" type="text/css" href="css/buttons.css">
 </head>
 <body>
 
 <div>
+    <button class="button-blue "><a href="/">Main Page</a></button>
+
     <h2>Create task</h2>
     <form action="#" th:action="@{/task-create}" th:object="${task}" method="post">
         <input type="text" th:field="*{title}" placeholder=" title"> <br>
         <input type="text" th:field="*{text}" placeholder=" text"> <br>
 
-        <label > expired</label>
+        <label> expired</label>
         <select th:field="*{expired}">
             <option th:value="'HOURS_6'" th:text="HOURS_6"></option>
             <option th:value="'HOURS_12'" th:text="HOURS_12"></option>
@@ -24,8 +26,9 @@
             <option th:value="'ONE_MONTH'" th:text="ONE_MONTH"></option>
 
         </select>
+        <br>
 
-        <input type="submit" id="submit" value="create task">
+        <input type="submit" id="submit" value="create task" class="button-green">
 
     </form>
 </div>

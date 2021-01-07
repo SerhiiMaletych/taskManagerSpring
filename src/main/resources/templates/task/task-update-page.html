@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/buttons.css">
 <meta charset="UTF-8">
 <title>Update task</title>
 
 
 </head>
 <body>
+
+<button class="button-blue "><a href="/"  >Main Page</a></button>
 
 <form action="#" th:action="@{/task-update/{id}(id=${task.id})}" th:object="${task}" method="post">
     <input type="text" th:field="*{title}" id="title"  placeholder=" title"> <br>
@@ -17,7 +21,7 @@
             <option th:value="'IN_PROGRESS'" th:text="IN_PROGRESS"></option>
             <option th:value="'FAILED'" th:text="FAILED"></option>
 
-        </select>
+        </select> <br>
     <label > expired</label>
     <select th:field="*{expired}">
         <option th:value="'HOURS_6'" th:text="HOURS_6"></option>
@@ -28,10 +32,9 @@
         <option th:value="'ONE_MONTH'" th:text="ONE_MONTH"></option>
 
     </select>
+    <br>
 
-
-
-    <input type="submit"  value="Update task">
+    <input type="submit"  value="Update task" class="button-green">
 </form>
 
 

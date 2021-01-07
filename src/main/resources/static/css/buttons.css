@@ -1,0 +1,23 @@
+.button-blue{
+    background-color: lightblue;
+}
+
+.button-green{
+    background-color: lightgreen;
+}
+.button-red{
+    background-color: red;
+}
+.button-edit{
+    margin-left: 168px;
+
+}
+.button-delete {
+    margin-left: 1px;
+}
+
+.button-header {
+    margin-bottom: 10px;
+    height: 25px;
+    font-size: 16px;
+}
