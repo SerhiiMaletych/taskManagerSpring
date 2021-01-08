@@ -3,6 +3,7 @@ package taskManagerSpring.taskManagerSpring.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 
 @Entity
@@ -13,12 +14,14 @@ public class Task {
 
     public Task() {
     }
-    public Task(Long id, String title, @Size(min = 2, max = 200) String text, Status status, Expired expired) {
+    public Task(Long id, String title, @Size(min = 2, max = 200) String text, Status status, Expired expired,String date) {
         this.id = id;
         this.title = title;
         this.text = text;
         this.status = status;
         this.expired = expired;
+        this.date=date;
+
     }
 
     public Task(String title) {
@@ -45,6 +48,8 @@ public class Task {
     @Enumerated(value = EnumType.STRING)
     private Expired expired;
 
+    @Column(name = "date", unique = true)
+    private String date;
 
     public Long getId() {
         return id;
@@ -87,6 +92,12 @@ public class Task {
         this.expired = expired;
     }
 
+    public String getDate() {
+        return date;
+    }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
 }
 

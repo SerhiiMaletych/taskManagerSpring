@@ -12,7 +12,7 @@
 <div>
     <button class="button-blue button-main-page-back "><a href="/">Main Page</a></button>
 
-    <h2>Create task</h2>
+    <h2 class="h2">Create task</h2>
     <form action="#" th:action="@{/task-create}"
           th:object="${task}" method="post" class="main-form">
         <input type="text" th:field="*{title}" placeholder=" title" class="input"> <br>

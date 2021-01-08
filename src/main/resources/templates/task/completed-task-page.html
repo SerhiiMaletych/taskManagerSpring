@@ -6,10 +6,10 @@
     <link rel="stylesheet" type="text/css" href="css/main_page.css">
 </head>
 <body>
-<div class="main-container" >
+<div class="main-container">
     <div th:each="task:${task}" class="task ">
 
-        <p th:text="${task.title}" ></p><br>
+        <p th:text="${task.title}"></p><br>
         <p th:text="${task.status}"></p><br>
         <p th:text="${task.expired}"></p><br>
         <p th:text="${task.text}" class="text"></p><br>

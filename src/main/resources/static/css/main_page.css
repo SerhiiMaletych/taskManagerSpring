@@ -18,7 +18,7 @@
 .text {
     padding: 5px;
     text-align: justify;
-    height: 350px;
+    height: 280px;
     border-top: 1px solid red;
 
 }
@@ -32,17 +32,17 @@
 }
 
 .top-text-div {
-    height: 45px;
+    height: 60px;
 }
 
 .status {
     text-align: center;
-    margin-top: 7px;
+    margin-top: 5px;
     padding: 0;
     line-height: 3px;
 }
 .expired {
-    margin-top: 15px;
+    margin-top: 5px;
     text-align: center;
     padding: 0;
     line-height: 3px;
@@ -50,5 +50,9 @@
 .title {
     margin-top: 10px;
     margin-bottom: -10px;
+}
+
+.date {
+    margin-top: 5px;
 }
 

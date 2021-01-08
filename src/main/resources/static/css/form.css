@@ -15,10 +15,14 @@
 .status{
     width:165px;
 
-
 }
 .expired {
     width:152px;
 
 
+}
+
+.h2 {
+    margin-bottom: 5px;
+    margin-left: 30px;
 }

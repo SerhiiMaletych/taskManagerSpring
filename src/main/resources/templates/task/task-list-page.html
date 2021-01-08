@@ -4,37 +4,36 @@
     <meta charset="UTF-8">
     <title>Tasks</title>
 
-
     <link rel="stylesheet" type="text/css" href="css/main_page.css">
     <link rel="stylesheet" type="text/css" href="css/buttons.css">
-
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
 
-        $( function() {
-            $( "#draggable" ).draggable();
-        } );
+        $(function () {
+            $("#draggable").draggable();
+        });
     </script>
 </head>
 <body>
 
 <h2>Tasks</h2>
-<button class="button-blue button-header"><a href="/task-create"  >Create new task</a></button>
-<button class="button-green button-header"><a href="/completed-tasks"  >Completed tasks</a></button>
-<button class="button-red button-header"><a href="/failed-tasks"  >Failed tasks</a></button>
+<button class="button-blue button-header"><a href="/task-create">Create new task</a></button>
+<button class="button-green button-header"><a href="/completed-tasks">Completed tasks</a></button>
+<button class="button-red button-header"><a href="/failed-tasks">Failed tasks</a></button>
 
 
-<div class="main-container" >
+<div class="main-container">
     <div th:each="task:${task}" class="task " id="draggable">
-    <div class="top-text-div">
-        <p th:text="${task.title}"  class="top-text title"  ></p>
-        <button  class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}" >Edit</a></button>
-        <button  class="button-delete"><a th:href="@{task-delete/{id}(id=${task.id})}" >Delete</a></button>
-        <p th:text="${task.status}"  class="status"></p>
-        <p th:text="${task.expired}"   class="expired"></p>
-    </div>
+        <div class="top-text-div">
+            <p th:text="${task.title}" class="top-text title"></p>
+            <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}">Edit</a></button>
+            <button class="button-delete"><a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a></button>
+            <p th:text="${task.date}" class="top-text date "></p>
+            <p th:text="${task.status}" class="status"></p>
+            <p th:text="${task.expired}" class="expired"></p>
+        </div>
         <p th:text="${task.text}" class="text"></p><br>
 
     </div>
