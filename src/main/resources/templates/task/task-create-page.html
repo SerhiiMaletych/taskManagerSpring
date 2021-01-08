@@ -5,19 +5,21 @@
     <title>Create task</title>
 
     <link rel="stylesheet" type="text/css" href="css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="css/form.css">
 </head>
 <body>
 
 <div>
-    <button class="button-blue "><a href="/">Main Page</a></button>
+    <button class="button-blue button-main-page-back "><a href="/">Main Page</a></button>
 
     <h2>Create task</h2>
-    <form action="#" th:action="@{/task-create}" th:object="${task}" method="post">
-        <input type="text" th:field="*{title}" placeholder=" title"> <br>
-        <input type="text" th:field="*{text}" placeholder=" text"> <br>
+    <form action="#" th:action="@{/task-create}"
+          th:object="${task}" method="post" class="main-form">
+        <input type="text" th:field="*{title}" placeholder=" title" class="input"> <br>
+        <input type="text" th:field="*{text}" placeholder=" text" class="input"> <br>
 
-        <label> expired</label>
-        <select th:field="*{expired}">
+        <label> Expired</label>
+        <select th:field="*{expired}" class="input expired">
             <option th:value="'HOURS_6'" th:text="HOURS_6"></option>
             <option th:value="'HOURS_12'" th:text="HOURS_12"></option>
             <option th:value="'ONE_DAY'" th:text="ONE_DAY"></option>
@@ -28,7 +30,7 @@
         </select>
         <br>
 
-        <input type="submit" id="submit" value="create task" class="button-green">
+        <input type="submit" id="submit" value="create task" class="button-green button-submit-in-form">
 
     </form>
 </div>
