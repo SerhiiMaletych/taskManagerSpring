@@ -18,4 +18,6 @@ public class CompletedTaskController {
             model.addAttribute("findAllCompleted",taskRepository.findAllCompeleted());
             return "task/completed-task-page";
     }
+
+
 }

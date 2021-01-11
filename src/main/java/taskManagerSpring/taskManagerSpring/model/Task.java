@@ -1,14 +1,14 @@
 package taskManagerSpring.taskManagerSpring.model;
 
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.Date;
 
 
 @Entity
-
-
+@DynamicUpdate
 @Table(name = "task")
 public class Task {
 
@@ -48,8 +48,9 @@ public class Task {
     @Enumerated(value = EnumType.STRING)
     private Expired expired;
 
-    @Column(name = "date", unique = true)
+    @Column(name = "date", unique = true, updatable = false)
     private String date;
+
 
     public Long getId() {
         return id;

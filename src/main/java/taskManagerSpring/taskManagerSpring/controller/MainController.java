@@ -48,7 +48,7 @@ public class MainController {
     }
 
     @PostMapping("/task-update/{id}")
-    public String updateUser(@PathVariable("id") long id, @Valid Task task, BindingResult result, Model model) {
+    public String updateUser(@PathVariable("id") long id, @Valid Task task, BindingResult result) {
      if (result.hasErrors()) {
         task.setId(id);
         return "task/task-update-page";

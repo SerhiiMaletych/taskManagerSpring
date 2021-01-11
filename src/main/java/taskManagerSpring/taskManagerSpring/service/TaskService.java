@@ -6,7 +6,6 @@ import taskManagerSpring.taskManagerSpring.model.Task;
 import taskManagerSpring.taskManagerSpring.repository.TaskRepository;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -25,12 +24,12 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    public Task createTask(Task task) {
+    public void createTask(Task task) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
-        task.setStatus(Status.IN_PROGRESS);
         task.setDate(formatter.format(date));
-        return taskRepository.save(task);
+        task.setStatus(Status.IN_PROGRESS);
+        taskRepository.save(task);
     }
 
 

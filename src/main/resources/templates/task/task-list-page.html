@@ -30,7 +30,7 @@
             <p th:text="${task.title}" class="top-text title"></p>
             <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}">Edit</a></button>
             <button class="button-delete"><a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a></button>
-            <p th:text="${task.date}" class="top-text date "></p>
+        <p th:text="${task.date}" class="top-text date "></p>
             <p th:text="${task.status}" class="status"></p>
             <p th:text="${task.expired}" class="expired"></p>
         </div>
