@@ -10,12 +10,15 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
-
         $(function () {
-            $("#draggable").draggable();
+
+            $(".task").draggable({
+
+            });
+
+
         });
     </script>
-
 
 </head>
 <body>
@@ -27,7 +30,8 @@
 
 
 <div class="main-container">
-    <div th:each="task:${task}" class="task " id="draggable">
+
+    <div th:each="task:${task}" class="task" >
         <div class="top-text-div">
             <p th:text="${task.title}" class="top-text title"></p>
             <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}">Edit</a></button>

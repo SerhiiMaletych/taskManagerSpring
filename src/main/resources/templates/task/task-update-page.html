@@ -11,12 +11,12 @@
 </head>
 <body>
 
-<button class="button-blue button-main-page-back"><a href="/"  >Main Page</a></button>
+<button class="button button-blue button-main-page-back "><a href="/">Main Page</a></button>
 <h2 class="h2">Update task</h2>
 <form action="#" th:action="@{/task-update/{id}(id=${task.id})}"
       th:object="${task}" method="post" class="main-form">
-    <input type="text" th:field="*{title}" id="title"  placeholder=" title" class="input"> <br>
-    <input type="text" th:field="*{text}" id="text"  placeholder=" text" class="input"> <br>
+    <input type="text" th:field="*{title}" id="title"  placeholder="print a title here" class="input"> <br>
+    <input type="text" th:field="*{text}" id="text"  placeholder=" print your task here" class="input"> <br>
 
     <label > Status</label>
         <select th:field="*{status}" class="input status">

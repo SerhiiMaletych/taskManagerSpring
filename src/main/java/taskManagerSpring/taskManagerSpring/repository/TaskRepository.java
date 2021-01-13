@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import taskManagerSpring.taskManagerSpring.model.Task;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
