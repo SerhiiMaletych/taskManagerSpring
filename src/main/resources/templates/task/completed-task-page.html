@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <title>All done tasks</title>
     <link rel="stylesheet" type="text/css" href="css/main_page.css">
+    <link rel="stylesheet" type="text/css" href="css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="css/form.css">
 </head>
 <body>
+<button class="button button-blue button-main-page-back "><a href="/">Main Page</a></button>
 
+<div>
+<tr th:each="task: ${findAllCompleted}">
 
-<p class="result" th:text=" ${findAllCompleted}"></p>
+    <td th:text="${task.title}"></td>
+    <td th:text="${task.text}"></td>
+    <td th:text="${task.date}"></td>
+    <td th:text="${task.expired}"></td>
+    <td th:text="${task.status}"></td>
+
+</tr> <br>
+</div>
 </body>
 </html>

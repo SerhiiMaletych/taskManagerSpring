@@ -5,16 +5,18 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import taskManagerSpring.taskManagerSpring.model.Task;
 
-import java.util.List;
+import java.util.ArrayList;
+
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
+
     @Query(value= "SELECT * FROM task WHERE status ='IN_PROGRESS'", nativeQuery = true)
-    String findAllInProgress();
+    ArrayList<Task> findAllInProgress();
 
     @Query(value= "SELECT * FROM task WHERE status ='COMPLETED'", nativeQuery = true)
-    String findAllCompeleted();
+    ArrayList<Task> findAllCompeleted();
 
     @Query(value= "SELECT * FROM task WHERE status = 'FAILED'", nativeQuery = true)
-    String findAllFailed();
+    ArrayList<Task> findAllFailed();
 }

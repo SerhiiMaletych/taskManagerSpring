@@ -50,15 +50,18 @@
 .button-header {
     width: 150px;
     margin-bottom: 10px;
-    height: 40px;
-    font-size: 16px;
+    height: 45px;
+    font-size: 18px;
 }
 
 .button-main-page-back {
     margin-left: 30px;
+    font-size: 18px;
 }
 
 .button-submit-in-form {
     width: 210px;
+    font-size: 18px;
+
 
 }

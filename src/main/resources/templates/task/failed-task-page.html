@@ -5,6 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-<p class="result" th:text=" ${findAllFailed}"></p>
+
+<button class="button button-blue button-main-page-back "><a href="/">Main Page</a></button>
+
+<div>
+<tr th:each="task: ${findAllFailed}">
+
+    <td th:text="${task.title}"></td>
+    <td th:text="${task.text}"></td>
+    <td th:text="${task.date}"></td>
+    <td th:text="${task.expired}"></td>
+    <td th:text="${task.status}"></td>
+</tr> <br>
+</div>
 </body>
 </html>
