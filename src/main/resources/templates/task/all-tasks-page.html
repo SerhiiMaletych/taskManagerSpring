@@ -2,11 +2,12 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>All done tasks</title>
+    <title>All tasks</title>
     <link rel="stylesheet" type="text/css" href="css/main_page.css">
     <link rel="stylesheet" type="text/css" href="css/buttons.css">
     <link rel="stylesheet" type="text/css" href="css/form.css">
     <link rel="stylesheet" type="text/css" href="css/table.css">
+
 </head>
 <body>
 <button class="button button-blue button-main-page-back "><a href="/">Main Page</a></button>
@@ -14,24 +15,24 @@
 <table>
     <thead>
     <tr>
-
+        <th>Id</th>
         <th>Title</th>
         <th>Text</th>
         <th>Date</th>
         <th>Expired</th>
-
-
+        <th>Status</th>
 
 
     </tr>
     </thead>
     <tbody>
-    <tr th:each="task: ${findAllCompleted}">
+    <tr th:each="task: ${task}">
+        <td class="data" th:text="${task.id}"></td>
         <td class="data" th:text="${task.title}"></td>
         <td class="data" th:text="${task.text}"></td>
         <td class="data" th:text="${task.date}"></td>
         <td class="data " th:text="${task.expired}"></td>
-
+        <td class="data" th:text="${task.status}"></td>
 
 
     </tr>

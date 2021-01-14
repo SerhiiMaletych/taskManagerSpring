@@ -17,12 +17,20 @@ import java.util.List;
 @Controller
 public class MainController {
 
-       private final TaskService taskService;
-       private final TaskRepository taskRepository;
+    private final TaskService taskService;
+    private final TaskRepository taskRepository;
 
     public MainController(TaskService taskService, TaskRepository taskRepository) {
         this.taskService = taskService;
         this.taskRepository = taskRepository;
+    }
+
+    @GetMapping("/all-tasks")
+    public String findAllTasks(Model model) {
+        List<Task> task = taskService.findAll();
+        model.addAttribute("task", task);
+        return "task/all-tasks-page";
+
     }
 
 
@@ -31,8 +39,9 @@ public class MainController {
         return "task/task-create-page";
 
     }
+
     @PostMapping("task-create")
-    public String createTask(Task task, Model model){
+    public String createTask(Task task, Model model) {
         taskService.createTask(task);
         model.addAttribute("status", Status.values());
         return "redirect:/";
@@ -48,21 +57,20 @@ public class MainController {
     }
 
     @PostMapping("/task-update/{id}")
-    public String updateUser(@PathVariable("id") long id, @Valid Task task, BindingResult result) {
-     if (result.hasErrors()) {
-        task.setId(id);
-        return "task/task-update-page";
+    public String updateTask(@PathVariable("id") long id, @Valid Task task, BindingResult result) {
+        if (result.hasErrors()) {
+            task.setId(id);
+            return "task/task-update-page";
+        }
+
+        taskRepository.save(task);
+
+        return "redirect:/";
     }
 
-    taskRepository.save(task);
-
-    return "redirect:/";
-}
-
     @GetMapping("/")
-    public String findAllTasks(Model model) {
-        List<Task> task = taskService.findAll();
-        model.addAttribute("task", task);
+    public String findAllCompletedTasks(Model model) {
+        model.addAttribute("findAllInProgress", taskService.findAllInProgress());
         return "task/task-list-page";
 
     }
@@ -75,11 +83,6 @@ public class MainController {
         taskRepository.delete(task);
         return "redirect:/";
     }
-
-
-
-
-
 
 
 }

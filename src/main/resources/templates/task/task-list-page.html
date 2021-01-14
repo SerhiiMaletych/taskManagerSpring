@@ -27,11 +27,13 @@
 <button class="button button-blue button-header"><a href="/task-create">Create new task</a></button>
 <button class="button button-green button-header"><a href="/completed-tasks">Completed tasks</a></button>
 <button class="button button-red button-header"><a href="/failed-tasks">Failed tasks</a></button>
+<button class="button button-blue button-header"><a href="/all-tasks">All tasks</a></button>
+
 
 
 <div class="main-container">
 
-    <div th:each="task:${task}" class="task" >
+    <div th:each="task:${findAllInProgress}" class="task" >
         <div class="top-text-div">
             <p th:text="${task.title}" class="top-text title"></p>
             <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}">Edit</a></button>

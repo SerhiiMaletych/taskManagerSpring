@@ -30,6 +30,10 @@ public class TaskService {
     public List<Task>findAllCompleted() {
         return taskRepository.findAllCompeleted();
     }
+    public List<Task>findAllInProgress() {
+        return taskRepository.findAllInProgress();
+    }
+
 
     public void createTask(Task task) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

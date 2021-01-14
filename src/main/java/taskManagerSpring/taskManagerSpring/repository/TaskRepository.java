@@ -12,12 +12,12 @@ import java.util.List;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
-    @Query(value= "SELECT * FROM task WHERE status ='IN_PROGRESS'", nativeQuery = true)
+    @Query(value = "SELECT * FROM task WHERE status ='IN_PROGRESS'", nativeQuery = true)
     List<Task> findAllInProgress();
 
-    @Query(value= "SELECT * FROM task WHERE status ='COMPLETED'", nativeQuery = true)
+    @Query(value = "SELECT * FROM task WHERE status ='COMPLETED'", nativeQuery = true)
     List<Task> findAllCompeleted();
 
-    @Query(value= "SELECT * FROM task WHERE status = 'FAILED'", nativeQuery = true)
+    @Query(value = "SELECT * FROM task WHERE status = 'FAILED'", nativeQuery = true)
     List<Task> findAllFailed();
 }
