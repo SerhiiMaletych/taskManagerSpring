@@ -24,6 +24,13 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
+    public List<Task>findAllFailed() {
+        return taskRepository.findAllFailed();
+    }
+    public List<Task>findAllCompleted() {
+        return taskRepository.findAllCompeleted();
+    }
+
     public void createTask(Task task) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();

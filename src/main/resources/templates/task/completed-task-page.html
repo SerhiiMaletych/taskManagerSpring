@@ -10,16 +10,28 @@
 <body>
 <button class="button button-blue button-main-page-back "><a href="/">Main Page</a></button>
 
-<div>
-<tr th:each="task: ${findAllCompleted}">
+<table>
+    <thead>
+    <tr>
+        <th>title</th>
+        <th>text</th>
+        <th>date</th>
+        <th>expired</th>
 
-    <td th:text="${task.title}"></td>
-    <td th:text="${task.text}"></td>
-    <td th:text="${task.date}"></td>
-    <td th:text="${task.expired}"></td>
-    <td th:text="${task.status}"></td>
 
-</tr> <br>
-</div>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task: ${findAllCompleted}">
+        <td class="data" th:text="${task.title}"></td>
+        <td class="data" th:text="${task.text}"></td>
+        <td class="data" th:text="${task.date}"></td>
+        <td class="data " th:text="${task.expired}"></td>
+
+
+
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

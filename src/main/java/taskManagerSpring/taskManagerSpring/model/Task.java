@@ -12,10 +12,26 @@ import javax.validation.constraints.Size;
 @Table(name = "task")
 public class Task {
 
+    public Task() {
+    }
+    public Task(Long id, String title, @Size(min = 2, max = 200) String text, Status status, Expired expired,String date) {
+        this.id = id;
+        this.title = title;
+        this.text = text;
+        this.status = status;
+        this.expired = expired;
+        this.date=date;
+
+    }
+
+    public Task(String title) {
+        this.title = title;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -34,28 +50,6 @@ public class Task {
 
     @Column(name = "date", unique = true, updatable = false)
     private String date;
-
-
-    public Task() {
-    }
-    public Task(Long id, String title, @Size(min = 2, max = 200) String text, Status status, Expired expired,String date) {
-        this.id = id;
-        this.title = title;
-        this.text = text;
-        this.status = status;
-        this.expired = expired;
-        this.date=date;
-
-    }
-
-    public Task(String title) {
-        this.title = title;
-    }
-
-
-
-
-
 
 
     public Long getId() {
