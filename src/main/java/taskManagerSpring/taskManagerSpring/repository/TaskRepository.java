@@ -16,8 +16,11 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findAllInProgress();
 
     @Query(value = "SELECT * FROM task WHERE status ='COMPLETED'", nativeQuery = true)
-    List<Task> findAllCompeleted();
+    List<Task> findAllCompleted();
 
     @Query(value = "SELECT * FROM task WHERE status = 'FAILED'", nativeQuery = true)
     List<Task> findAllFailed();
+
+
 }
+

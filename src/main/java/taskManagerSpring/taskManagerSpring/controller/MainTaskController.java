@@ -15,12 +15,12 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-public class MainController {
+public class MainTaskController {
 
     private final TaskService taskService;
     private final TaskRepository taskRepository;
 
-    public MainController(TaskService taskService, TaskRepository taskRepository) {
+    public MainTaskController(TaskService taskService, TaskRepository taskRepository) {
         this.taskService = taskService;
         this.taskRepository = taskRepository;
     }

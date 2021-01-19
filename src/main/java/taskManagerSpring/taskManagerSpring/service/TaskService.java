@@ -28,7 +28,7 @@ public class TaskService {
         return taskRepository.findAllFailed();
     }
     public List<Task>findAllCompleted() {
-        return taskRepository.findAllCompeleted();
+        return taskRepository.findAllCompleted();
     }
     public List<Task>findAllInProgress() {
         return taskRepository.findAllInProgress();
