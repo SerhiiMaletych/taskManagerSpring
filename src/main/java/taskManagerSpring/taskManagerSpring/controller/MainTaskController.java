@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import taskManagerSpring.taskManagerSpring.model.Status;
 import taskManagerSpring.taskManagerSpring.model.Task;
+import taskManagerSpring.taskManagerSpring.repository.ExpiredRepository;
 import taskManagerSpring.taskManagerSpring.repository.TaskRepository;
+import taskManagerSpring.taskManagerSpring.service.ExpiredTaskService;
 import taskManagerSpring.taskManagerSpring.service.TaskService;
 
 import javax.validation.Valid;
@@ -19,10 +21,13 @@ public class MainTaskController {
 
     private final TaskService taskService;
     private final TaskRepository taskRepository;
+    private final ExpiredTaskService expiredTaskService;
 
-    public MainTaskController(TaskService taskService, TaskRepository taskRepository) {
+    public MainTaskController(TaskService taskService, TaskRepository taskRepository, ExpiredRepository expiredRepository, ExpiredTaskService expiredTaskService) {
         this.taskService = taskService;
         this.taskRepository = taskRepository;
+
+        this.expiredTaskService = expiredTaskService;
     }
 
     @GetMapping("/all-tasks")
@@ -71,6 +76,12 @@ public class MainTaskController {
     @GetMapping("/")
     public String findAllCompletedTasks(Model model) {
         model.addAttribute("findAllInProgress", taskService.findAllInProgress());
+        model.addAttribute("sixHours",expiredTaskService.findAllSixHoursTasks() );
+        model.addAttribute("twelveHours", expiredTaskService.findAllTwelveHoursTasks());
+        model.addAttribute("oneDay", expiredTaskService.findAllOneDayTasks());
+        model.addAttribute("twoDays",expiredTaskService.findAllTwoDaysTasks());
+        model.addAttribute("oneWeek", expiredTaskService.findAllWeekTasks());
+        model.addAttribute("oneMonth", expiredTaskService.findAllMonthTasks());
         return "task/task-list-page";
 
     }
