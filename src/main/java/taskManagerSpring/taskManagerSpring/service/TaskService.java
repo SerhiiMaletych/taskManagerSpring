@@ -7,7 +7,6 @@ import taskManagerSpring.taskManagerSpring.model.Task;
 import taskManagerSpring.taskManagerSpring.repository.TaskRepository;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -21,6 +20,7 @@ public class TaskService {
     public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
+
 
 
     public List<Task> findAll() {
@@ -38,11 +38,33 @@ public class TaskService {
     }
 
 
+
+
     public void createTask(Task task) {
+
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         task.setDate(formatter.format(date));
         task.setStatus(Status.IN_PROGRESS);
+
+        setExpiredDate(task, formatter, date);
+    }
+
+
+    public void updateTask (Task task) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        setExpiredDate(task, formatter, date);
+    }
+
+    public Date addHoursToJavaUtilDate(Date date, int hours) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.HOUR_OF_DAY, hours);
+        return calendar.getTime();
+    }
+
+    private void setExpiredDate(Task task, SimpleDateFormat formatter, Date date) {
         if(task.getExpired()== Expired.HOURS_6) {
             task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 6)));
         }
@@ -53,7 +75,7 @@ public class TaskService {
             task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 24)));
         }
         else if(task.getExpired()==Expired.TWO_DAYS){
-    task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 48)));
+            task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 48)));
         }
         else if(task.getExpired()==Expired.ONE_WEEK){
             task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 168)));
@@ -62,12 +84,5 @@ public class TaskService {
             task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 720)));
         }
         taskRepository.save(task);
-    }
-
-    public Date addHoursToJavaUtilDate(Date date, int hours) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.add(Calendar.HOUR_OF_DAY, hours);
-        return calendar.getTime();
     }
 }

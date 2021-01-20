@@ -68,7 +68,7 @@ public class MainTaskController {
             return "task/task-update-page";
         }
 
-        taskRepository.save(task);
+        taskService.updateTask(task);
 
         return "redirect:/";
     }

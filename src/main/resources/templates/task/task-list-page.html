@@ -12,9 +12,7 @@
     <script>
         $(function () {
 
-            $(".task").draggable({
-
-            });
+            $(".task").draggable({});
 
 
         });
@@ -30,33 +28,36 @@
 <button class="button button-blue button-header"><a href="/all-tasks">All tasks</a></button>
 
 
-
 <div class="main-container">
     <div class="column">
         <h5 class="expired-time">Six hours</h5>
-    <div th:each="task:${sixHours}" class="task" >
-        <div class="top-text-div">
-            <p th:text="${task.title}" class="top-text title"></p>
-            <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}">Edit</a></button>
-            <button class="button-delete"><a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a></button>
-        <p th:text="${task.date}" class="top-text date "></p>
-            <p th:text="${task.status}" class="status"></p>
+        <div th:each="task:${sixHours}" class="task">
+            <div class="top-text-div">
+                <p th:text="${task.title}" class="top-text title"></p>
+
+                <p th:text="${task.date}" class="top-text date created "></p>
+                <p th:text="${task.expiredDate}" class="top-text date "></p>
+
+                <p th:text="${task.status}" class="status"></p>
+
+                <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}">Edit</a></button>
+                <button><a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a></button>
+            </div>
+            <p th:text="${task.text}" class="text"></p><br>
 
         </div>
-        <p th:text="${task.text}" class="text"></p><br>
-
     </div>
-</div>
 
     <div class="column">
         <h5 class="expired-time">Twelve hours</h5>
-        <div th:each="task:${twelveHours}" class="task" >
+        <div th:each="task:${twelveHours}" class="task">
             <div class="top-text-div">
                 <p th:text="${task.title}" class="top-text title"></p>
-                <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}">Edit</a></button>
-                <button class="button-delete"><a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a></button>
                 <p th:text="${task.date}" class="top-text date "></p>
+                <p th:text="${task.expiredDate}" class="top-text date "></p>
                 <p th:text="${task.status}" class="status"></p>
+                <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}">Edit</a></button>
+                <button><a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a></button>
 
             </div>
             <p th:text="${task.text}" class="text"></p><br>
@@ -66,13 +67,14 @@
 
     <div class="column">
         <h5 class="expired-time">One day</h5>
-        <div th:each="task:${OneDay}" class="task" >
+        <div th:each="task:${oneDay}" class="task">
             <div class="top-text-div">
                 <p th:text="${task.title}" class="top-text title"></p>
-                <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}">Edit</a></button>
-                <button class="button-delete"><a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a></button>
                 <p th:text="${task.date}" class="top-text date "></p>
+                <p th:text="${task.expiredDate}" class="top-text date "></p>
                 <p th:text="${task.status}" class="status"></p>
+                <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}">Edit</a></button>
+                <button><a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a></button>
 
             </div>
             <p th:text="${task.text}" class="text"></p><br>
@@ -82,13 +84,14 @@
 
     <div class="column">
         <h5 class="expired-time">Two days</h5>
-        <div th:each="task:${twoDays}" class="task" >
+        <div th:each="task:${twoDays}" class="task">
             <div class="top-text-div">
                 <p th:text="${task.title}" class="top-text title"></p>
-                <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}">Edit</a></button>
-                <button class="button-delete"><a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a></button>
                 <p th:text="${task.date}" class="top-text date "></p>
+                <p th:text="${task.expiredDate}" class="top-text date "></p>
                 <p th:text="${task.status}" class="status"></p>
+                <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}">Edit</a></button>
+                <button><a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a></button>
 
             </div>
             <p th:text="${task.text}" class="text"></p><br>
@@ -98,13 +101,14 @@
 
     <div class="column">
         <h5 class="expired-time">One week</h5>
-        <div th:each="task:${oneWeek}" class="task" >
+        <div th:each="task:${oneWeek}" class="task">
             <div class="top-text-div">
                 <p th:text="${task.title}" class="top-text title"></p>
-                <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}">Edit</a></button>
-                <button class="button-delete"><a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a></button>
                 <p th:text="${task.date}" class="top-text date "></p>
+                <p th:text="${task.expiredDate}" class="top-text date "></p>
                 <p th:text="${task.status}" class="status"></p>
+                <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}">Edit</a></button>
+                <button><a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a></button>
 
             </div>
             <p th:text="${task.text}" class="text"></p><br>
@@ -114,13 +118,14 @@
 
     <div class="column">
         <h5 class="expired-time">One month</h5>
-        <div th:each="task:${oneMonth}" class="task" >
+        <div th:each="task:${oneMonth}" class="task">
             <div class="top-text-div">
                 <p th:text="${task.title}" class="top-text title"></p>
-                <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}">Edit</a></button>
-                <button class="button-delete"><a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a></button>
                 <p th:text="${task.date}" class="top-text date "></p>
+                <p th:text="${task.expiredDate}" class="top-text date "></p>
                 <p th:text="${task.status}" class="status"></p>
+                <button class="button-edit"><a th:href="@{task-update/{id}(id=${task.id})}">Edit</a></button>
+                <button><a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a></button>
 
             </div>
             <p th:text="${task.text}" class="text"></p><br>
@@ -129,17 +134,7 @@
     </div>
 
 
-
-
-
-
-
-
-
-
-
 </div>
-
 
 
 </body>
