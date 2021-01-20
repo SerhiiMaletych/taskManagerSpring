@@ -5,6 +5,8 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
+import java.util.Date;
 
 
 @Entity
@@ -52,6 +54,19 @@ public class Task {
     private String date;
 
 
+
+
+    @Column(name = "expireddate")
+    private String expiredDate;
+
+
+    public String getExpiredDate() {
+        return expiredDate;
+    }
+
+    public void setExpiredDate(String expiredDate) {
+        this.expiredDate = expiredDate;
+    }
     public Long getId() {
         return id;
     }
@@ -100,5 +115,8 @@ public class Task {
     public void setDate(String date) {
         this.date = date;
     }
+
+
+
 }
 

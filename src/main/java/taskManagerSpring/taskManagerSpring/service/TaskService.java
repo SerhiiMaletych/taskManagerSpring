@@ -1,11 +1,14 @@
 package taskManagerSpring.taskManagerSpring.service;
 
 import org.springframework.stereotype.Service;
+import taskManagerSpring.taskManagerSpring.model.Expired;
 import taskManagerSpring.taskManagerSpring.model.Status;
 import taskManagerSpring.taskManagerSpring.model.Task;
 import taskManagerSpring.taskManagerSpring.repository.TaskRepository;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -40,8 +43,31 @@ public class TaskService {
         Date date = new Date();
         task.setDate(formatter.format(date));
         task.setStatus(Status.IN_PROGRESS);
+        if(task.getExpired()== Expired.HOURS_6) {
+            task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 6)));
+        }
+        else if(task.getExpired()==Expired.HOURS_12){
+            task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 12)));
+        }
+        else if(task.getExpired()==Expired.ONE_DAY){
+            task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 24)));
+        }
+        else if(task.getExpired()==Expired.TWO_DAYS){
+    task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 48)));
+        }
+        else if(task.getExpired()==Expired.ONE_WEEK){
+            task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 168)));
+        }
+        else if(task.getExpired()==Expired.ONE_MONTH){
+            task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 720)));
+        }
         taskRepository.save(task);
     }
 
-
+    public Date addHoursToJavaUtilDate(Date date, int hours) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.HOUR_OF_DAY, hours);
+        return calendar.getTime();
+    }
 }
