@@ -18,3 +18,14 @@ td{
     font-size: 25px;
     height: 30px;
 }
+
+.title-failed {
+    margin-left: 25%;
+    font-size: 30px;
+    color: red;
+}
+.title-completed {
+    margin-left: 25%;
+    font-size: 30px;
+    color: green;
+}
