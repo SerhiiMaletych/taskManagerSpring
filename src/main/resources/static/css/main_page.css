@@ -29,7 +29,7 @@ body {
 
 .task{
     width: 97%;
-    height: 140px;
+    height: 115px;
     float: left;
     flex: 0 0 auto;
     background-color: aliceblue;
@@ -42,8 +42,8 @@ body {
 .text {
     padding: 5px;
     text-align: center;
-    height: 125px;
-    border-top: 1px solid red;
+    height: 100px;
+
 
 }
 
