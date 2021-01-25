@@ -29,7 +29,7 @@ body {
 
 .task{
     width: 97%;
-    height: 190px;
+    height: 140px;
     float: left;
     flex: 0 0 auto;
     background-color: aliceblue;
@@ -49,14 +49,13 @@ body {
 
 .top-text {
     text-align: center;
-    margin: 3px 0 0;
     padding: 0;
     line-height: 3px;
     height: 10px;
 }
 
 .top-text-div {
-    height: 70px;
+    height: 20px;
 }
 
 .status {
