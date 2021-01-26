@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+
+    <link rel="stylesheet" type="text/css" href="css/main_page.css">
+    <link rel="stylesheet" type="text/css" href="css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="css/dropdown.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+
+            $(".task").draggable({});
+
+        });
+    </script>
+</head>
+
+<body>
+
+
+<h2>Tasks</h2>
+<button class="button button-blue button-header"><a href="/task-create">Create new task</a></button>
+<button class="button button-green button-header"><a href="/completed-tasks">Completed tasks</a></button>
+<button class="button button-red button-header"><a href="/failed-tasks">Failed tasks</a></button>
+<button class="button button-blue button-header"><a href="/all-tasks">All tasks</a></button>
+
+
+<div class="main-container">
+    <div class="column">
+
+        <h5 class="expired-time">Six hours</h5>
+        <div th:each="task:${sixHours}" class="task">
+            <div class="top-text-div">
+                <div class="dropdown">
+                    <button class="dropbtn">props</button>
+                    <div class="dropdown-content" th:each="task:${sixHours}">
+                        <a href="#"><p th:text="${task.title}" class="top-text title"></p></a>
+                        <a href="#"><p th:text="${task.date}" class="top-text date created "></p></a>
+                        <a href="#"><p th:text="${task.expiredDate}" class="top-text date "></p></a>
+                        <a href="#"><p th:text="${task.status}" class="status"></p></a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">action</button>
+                    <div class="dropdown-content">
+                        <a th:href="@{task-update/{id}(id=${task.id})}">Update</a>
+                        <a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a>
+
+                    </div>
+                </div>
+            </div>
+            <p th:text="${task.text}" class="text"></p><br>
+
+        </div>
+    </div>
+
+    <div class="column">
+        <h5 class="expired-time">Twelve hours</h5>
+        <div th:each="task:${twelveHours}" class="task">
+            <div class="top-text-div">
+                <div class="dropdown">
+                    <button class="dropbtn">props</button>
+                    <div class="dropdown-content" th:each="task:${twelveHours}">
+                        <a href="#"><p th:text="${task.title}" class="top-text title"></p></a>
+                        <a href="#"><p th:text="${task.date}" class="top-text date created "></p></a>
+                        <a href="#"><p th:text="${task.expiredDate}" class="top-text date "></p></a>
+                        <a href="#"><p th:text="${task.status}" class="status"></p></a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">action</button>
+                    <div class="dropdown-content">
+                        <a th:href="@{task-update/{id}(id=${task.id})}">Update</a>
+                        <a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a>
+
+                    </div>
+                </div>
+            </div>
+            <p th:text="${task.text}" class="text"></p><br>
+
+        </div>
+    </div>
+
+
+    <div class="column">
+
+        <h5 class="expired-time">One day</h5>
+        <div th:each="task:${oneDay}" class="task">
+            <div class="top-text-div">
+                <div class="dropdown">
+                    <button class="dropbtn">props</button>
+                    <div class="dropdown-content" th:each="task:${oneDay}">
+                        <a href="#"><p th:text="${task.title}" class="top-text title"></p></a>
+                        <a href="#"><p th:text="${task.date}" class="top-text date created "></p></a>
+                        <a href="#"><p th:text="${task.expiredDate}" class="top-text date "></p></a>
+                        <a href="#"><p th:text="${task.status}" class="status"></p></a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">action</button>
+                    <div class="dropdown-content">
+                        <a th:href="@{task-update/{id}(id=${task.id})}">Update</a>
+                        <a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a>
+
+                    </div>
+                </div>
+            </div>
+            <p th:text="${task.text}" class="text"></p><br>
+
+        </div>
+    </div>
+
+    <div class="column">
+
+        <h5 class="expired-time">Two days</h5>
+        <div th:each="task:${twoDays}" class="task">
+            <div class="top-text-div">
+                <div class="dropdown">
+                    <button class="dropbtn">props</button>
+                    <div class="dropdown-content" th:each="task:${twoDays}">
+                        <a href="#"><p th:text="${task.title}" class="top-text title"></p></a>
+                        <a href="#"><p th:text="${task.date}" class="top-text date created "></p></a>
+                        <a href="#"><p th:text="${task.expiredDate}" class="top-text date "></p></a>
+                        <a href="#"><p th:text="${task.status}" class="status"></p></a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">action</button>
+                    <div class="dropdown-content">
+                        <a th:href="@{task-update/{id}(id=${task.id})}">Update</a>
+                        <a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a>
+
+                    </div>
+                </div>
+            </div>
+            <p th:text="${task.text}" class="text"></p><br>
+
+        </div>
+    </div>
+
+    <div class="column">
+
+        <h5 class="expired-time">One week</h5>
+        <div th:each="task:${oneWeek}" class="task">
+            <div class="top-text-div">
+                <div class="dropdown">
+                    <button class="dropbtn">props</button>
+                    <div class="dropdown-content" th:each="task:${oneWeek}">
+                        <a href="#"><p th:text="${task.title}" class="top-text title"></p></a>
+                        <a href="#"><p th:text="${task.date}" class="top-text date created "></p></a>
+                        <a href="#"><p th:text="${task.expiredDate}" class="top-text date "></p></a>
+                        <a href="#"><p th:text="${task.status}" class="status"></p></a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">action</button>
+                    <div class="dropdown-content">
+                        <a th:href="@{task-update/{id}(id=${task.id})}">Update</a>
+                        <a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a>
+
+                    </div>
+                </div>
+            </div>
+            <p th:text="${task.text}" class="text"></p><br>
+
+        </div>
+    </div>
+
+    <div class="column">
+
+        <h5 class="expired-time">One month</h5>
+        <div th:each="task:${oneMonth}" class="task">
+            <div class="top-text-div">
+                <div class="dropdown">
+                    <button class="dropbtn">props</button>
+                    <div class="dropdown-content" th:each="task:${oneMonth}">
+                        <a href="#"><p th:text="${task.title}" class="top-text title"></p></a>
+                        <a href="#"><p th:text="${task.date}" class="top-text date  "></p></a>
+                        <a href="#"><p th:text="${task.expiredDate}" class="top-text date "></p></a>
+                        <a href="#"><p th:text="${task.status}" class="status"></p></a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">action</button>
+                    <div class="dropdown-content">
+                        <a th:href="@{task-update/{id}(id=${task.id})}">Update</a>
+                        <a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a>
+
+                    </div>
+                </div>
+            </div>
+            <p th:text="${task.text}" class="text"></p><br>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
+
+    <meta charset="UTF-8">
+    <title>Update task</title>
+
+
+</head>
+<body>
+
+<button class="button button-blue button-main-page-back "><a href="/">Main Page</a></button>
+<h2 class="h2">Update task</h2>
+<form action="#" th:action="@{/block-update/{id}(id=${block.id})}"
+      th:object="${block}" method="post" class="main-form">
+    <input type="text" th:field="*{name}" id="name"  placeholder="print a title here" class="input"> <br>
+
+
+    <input type="submit"  value="Update block" class="button button-green button-submit-in-form">
+</form>
+
+
+</body>
+</html>
+

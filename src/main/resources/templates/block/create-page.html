@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create task</title>
+
+    <link rel="stylesheet" type="text/css" href="css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="css/form.css">
+</head>
+<body>
+
+<div>
+    <button class="button button-blue button-main-page-back "><a href="/">Main Page</a></button>
+
+    <h2 class="h2">Create block</h2>
+    <form action="#" th:action="@{/block-create}"
+          th:object="${block}" method="post" class="main-form">
+        <input type="text" th:field="*{name}" placeholder=" print a title here" class="input"> <br>
+
+        <input type="submit" id="submit" value="Create block" class="button button-green button-submit-in-form">
+
+    </form>
+</div>
+
+
+</body>
+</html>

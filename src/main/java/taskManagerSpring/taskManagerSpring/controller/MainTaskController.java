@@ -56,7 +56,7 @@ public class MainTaskController {
     @GetMapping("/task-update/{id}")
     public String updateTaskForm(@PathVariable("id") Long id, Model model) {
         Task task = taskRepository.findById(id).
-                orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+                orElseThrow(() -> new IllegalArgumentException("Invalid task Id:" + id));
         model.addAttribute("task", task);
         return "task/task-update-page";
     }
@@ -70,6 +70,14 @@ public class MainTaskController {
 
         taskService.updateTask(task);
 
+        return "redirect:/";
+    }
+
+    @GetMapping("/task-delete/{id}")
+    public String deleteTask(@PathVariable("id") Long id) {
+        Task task = taskRepository.findById(id).
+                orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        taskRepository.delete(task);
         return "redirect:/";
     }
 
@@ -87,13 +95,7 @@ public class MainTaskController {
     }
 
 
-    @GetMapping("/task-delete/{id}")
-    public String deleteTask(@PathVariable("id") Long id) {
-        Task task = taskRepository.findById(id).
-                orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-        taskRepository.delete(task);
-        return "redirect:/";
-    }
+
 
 
 }
