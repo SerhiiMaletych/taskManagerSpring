@@ -6,10 +6,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import taskManagerSpring.taskManagerSpring.model.Block;
 import taskManagerSpring.taskManagerSpring.model.Status;
 import taskManagerSpring.taskManagerSpring.model.Task;
 import taskManagerSpring.taskManagerSpring.repository.ExpiredRepository;
 import taskManagerSpring.taskManagerSpring.repository.TaskRepository;
+import taskManagerSpring.taskManagerSpring.service.BlockService;
 import taskManagerSpring.taskManagerSpring.service.ExpiredTaskService;
 import taskManagerSpring.taskManagerSpring.service.TaskService;
 
@@ -22,18 +24,21 @@ public class MainTaskController {
     private final TaskService taskService;
     private final TaskRepository taskRepository;
     private final ExpiredTaskService expiredTaskService;
+    private final BlockService blockService;
 
-    public MainTaskController(TaskService taskService, TaskRepository taskRepository, ExpiredRepository expiredRepository, ExpiredTaskService expiredTaskService) {
+    public MainTaskController(TaskService taskService, TaskRepository taskRepository, ExpiredRepository expiredRepository, ExpiredTaskService expiredTaskService, BlockService blockService) {
         this.taskService = taskService;
         this.taskRepository = taskRepository;
 
         this.expiredTaskService = expiredTaskService;
+        this.blockService = blockService;
     }
 
     @GetMapping("/all-tasks")
     public String findAllTasks(Model model) {
         List<Task> task = taskService.findAll();
         model.addAttribute("task", task);
+
         return "task/all-tasks-page";
 
     }
@@ -90,6 +95,8 @@ public class MainTaskController {
         model.addAttribute("twoDays",expiredTaskService.findAllTwoDaysTasks());
         model.addAttribute("oneWeek", expiredTaskService.findAllWeekTasks());
         model.addAttribute("oneMonth", expiredTaskService.findAllMonthTasks());
+        List<Block> block = blockService.findAll();
+        model.addAttribute("block", block);
         return "task/task-list-page";
 
     }

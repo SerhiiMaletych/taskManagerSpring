@@ -17,22 +17,32 @@
 
         });
     </script>
+
+    <script>
+        $(function () {
+
+            $(".block").draggable({});
+
+        });
+    </script>
 </head>
 
 <body>
 
 
 <h2>Tasks</h2>
-<button class="button button-blue button-header"><a href="/task-create">Create new task</a></button>
+<button class="button button-blue button-header"><a href="/task-create">New task</a></button>
+<button class="button button-orange button-header"><a href="/block-create">New block</a></button>
 <button class="button button-green button-header"><a href="/completed-tasks">Completed tasks</a></button>
 <button class="button button-red button-header"><a href="/failed-tasks">Failed tasks</a></button>
 <button class="button button-blue button-header"><a href="/all-tasks">All tasks</a></button>
 
 
 <div class="main-container">
-    <div class="column">
 
+    <div   class="column" >
         <h5 class="expired-time">Six hours</h5>
+
         <div th:each="task:${sixHours}" class="task">
             <div class="top-text-div">
                 <div class="dropdown">
@@ -180,6 +190,34 @@
                     <div class="dropdown-content" th:each="task:${oneMonth}">
                         <a href="#"><p th:text="${task.title}" class="top-text title"></p></a>
                         <a href="#"><p th:text="${task.date}" class="top-text date  "></p></a>
+                        <a href="#"><p th:text="${task.expiredDate}" class="top-text date "></p></a>
+                        <a href="#"><p th:text="${task.status}" class="status"></p></a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">action</button>
+                    <div class="dropdown-content">
+                        <a th:href="@{task-update/{id}(id=${task.id})}">Update</a>
+                        <a th:href="@{task-delete/{id}(id=${task.id})}">Delete</a>
+
+                    </div>
+                </div>
+            </div>
+            <p th:text="${task.text}" class="text"></p><br>
+
+        </div>
+    </div>
+
+    <div  th:each="block:${block}" class="column" >
+        <h5 th:text="${block.name}" class="expired-time"></h5>
+
+        <div th:each="task:${findAllInProgress}" class="task">
+            <div class="top-text-div">
+                <div class="dropdown">
+                    <button class="dropbtn">props</button>
+                    <div class="dropdown-content" th:each="task:${findAllInProgress}">
+                        <a href="#"><p th:text="${task.title}" class="top-text title"></p></a>
+                        <a href="#"><p th:text="${task.date}" class="top-text date created "></p></a>
                         <a href="#"><p th:text="${task.expiredDate}" class="top-text date "></p></a>
                         <a href="#"><p th:text="${task.status}" class="status"></p></a>
                     </div>

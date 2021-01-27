@@ -22,6 +22,11 @@
 
 }
 
+.button-orange {
+    background-color: orange;
+
+}
+
 .button-red:active {
     background-color: red;
     box-shadow: 0 2px #666;
@@ -34,11 +39,20 @@
     transform: translateY(1px);
 }
 
+.button-orange:active {
+    background-color: orange;
+    box-shadow: 0 2px #666;
+    transform: translateY(1px);
+}
+
 .button-blue:active {
     background-color: lightblue;
     box-shadow: 0 2px #666;
     transform: translateY(1px);
 }
+
+
+
 .button-edit{
     margin-left: 60px;
     margin-top: 7px;

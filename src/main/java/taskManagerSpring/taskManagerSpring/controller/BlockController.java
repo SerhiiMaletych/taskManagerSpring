@@ -10,6 +10,7 @@ import taskManagerSpring.taskManagerSpring.model.Block;
 import taskManagerSpring.taskManagerSpring.model.Task;
 import taskManagerSpring.taskManagerSpring.repository.BlockRepository;
 import taskManagerSpring.taskManagerSpring.service.BlockService;
+import taskManagerSpring.taskManagerSpring.service.TaskService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -19,15 +20,19 @@ public class BlockController {
 
     private final BlockService blockService;
     private final BlockRepository blockRepository;
+    private final TaskService taskService;
 
-    public BlockController(BlockService blockService, BlockRepository blockRepository) {
+    public BlockController(BlockService blockService, BlockRepository blockRepository, TaskService taskService) {
         this.blockService = blockService;
         this.blockRepository = blockRepository;
+        this.taskService = taskService;
     }
 
     @GetMapping("/all")
     public String findAllBlocks(Model model) {
         List<Block> block = blockService.findAll();
+        List<Task> task = taskService.findAll();
+        model.addAttribute("task", task);
         model.addAttribute("block", block);
         return "block/all";
 
