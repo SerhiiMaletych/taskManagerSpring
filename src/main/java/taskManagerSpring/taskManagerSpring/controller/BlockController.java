@@ -7,13 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import taskManagerSpring.taskManagerSpring.model.Block;
-import taskManagerSpring.taskManagerSpring.model.Task;
 import taskManagerSpring.taskManagerSpring.repository.BlockRepository;
 import taskManagerSpring.taskManagerSpring.service.BlockService;
 import taskManagerSpring.taskManagerSpring.service.TaskService;
 
 import javax.validation.Valid;
-import java.util.List;
+
 
 @Controller
 public class BlockController {
@@ -26,16 +25,6 @@ public class BlockController {
         this.blockService = blockService;
         this.blockRepository = blockRepository;
         this.taskService = taskService;
-    }
-
-    @GetMapping("/all")
-    public String findAllBlocks(Model model) {
-        List<Block> block = blockService.findAll();
-        List<Task> task = taskService.findAll();
-        model.addAttribute("task", task);
-        model.addAttribute("block", block);
-        return "block/all";
-
     }
 
 

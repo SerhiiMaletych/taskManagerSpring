@@ -53,8 +53,6 @@ public class Task {
     private String date;
 
 
-
-
     @Column(name = "expireddate")
     private String expiredDate;
 

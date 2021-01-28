@@ -62,6 +62,7 @@ public class TaskService {
         return calendar.getTime();
     }
 
+
     private void setExpiredDate(Task task, SimpleDateFormat formatter, Date date) {
         if(task.getExpired()== Expired.HOURS_6) {
             task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 6)));
@@ -82,5 +83,13 @@ public class TaskService {
             task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 720)));
         }
         taskRepository.save(task);
+    }
+
+    public void compareDatesForExpire(Task task) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        if(formatter.format(date).compareTo(task.getExpiredDate())>0) {
+            task.setStatus(Status.FAILED);
+        }
     }
 }

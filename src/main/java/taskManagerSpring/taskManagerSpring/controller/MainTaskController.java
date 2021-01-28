@@ -16,6 +16,7 @@ import taskManagerSpring.taskManagerSpring.service.ExpiredTaskService;
 import taskManagerSpring.taskManagerSpring.service.TaskService;
 
 import javax.validation.Valid;
+import java.text.ParseException;
 import java.util.List;
 
 @Controller
@@ -59,10 +60,11 @@ public class MainTaskController {
 
 
     @GetMapping("/task-update/{id}")
-    public String updateTaskForm(@PathVariable("id") Long id, Model model) {
+    public String updateTaskForm(@PathVariable("id") Long id, Model model) throws ParseException {
         Task task = taskRepository.findById(id).
                 orElseThrow(() -> new IllegalArgumentException("Invalid task Id:" + id));
         model.addAttribute("task", task);
+
         return "task/task-update-page";
     }
 
@@ -89,10 +91,10 @@ public class MainTaskController {
     @GetMapping("/")
     public String findAllCompletedTasks(Model model) {
         model.addAttribute("findAllInProgress", taskService.findAllInProgress());
-        model.addAttribute("sixHours",expiredTaskService.findAllSixHoursTasks() );
+        model.addAttribute("sixHours", expiredTaskService.findAllSixHoursTasks());
         model.addAttribute("twelveHours", expiredTaskService.findAllTwelveHoursTasks());
         model.addAttribute("oneDay", expiredTaskService.findAllOneDayTasks());
-        model.addAttribute("twoDays",expiredTaskService.findAllTwoDaysTasks());
+        model.addAttribute("twoDays", expiredTaskService.findAllTwoDaysTasks());
         model.addAttribute("oneWeek", expiredTaskService.findAllWeekTasks());
         model.addAttribute("oneMonth", expiredTaskService.findAllMonthTasks());
         List<Block> block = blockService.findAll();
@@ -100,9 +102,6 @@ public class MainTaskController {
         return "task/task-list-page";
 
     }
-
-
-
 
 
 }
