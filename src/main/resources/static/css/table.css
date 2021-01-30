@@ -20,12 +20,16 @@ td{
 }
 
 .title-failed {
-    margin-left: 25%;
-    font-size: 30px;
+    margin-left: 33%;
+    font-size: 40px;
     color: red;
 }
 .title-completed {
-    margin-left: 25%;
-    font-size: 30px;
+    margin-left: 33%;
+    font-size: 40px;
     color: green;
+}
+
+.table{
+    margin-left: 10%;
 }

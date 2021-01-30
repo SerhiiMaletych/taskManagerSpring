@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import taskManagerSpring.taskManagerSpring.exception.EmptyListException;
 import taskManagerSpring.taskManagerSpring.model.Block;
 import taskManagerSpring.taskManagerSpring.model.Status;
 import taskManagerSpring.taskManagerSpring.model.Task;
@@ -36,9 +37,12 @@ public class MainTaskController {
     }
 
     @GetMapping("/all-tasks")
-    public String findAllTasks(Model model) {
+    public String findAllTasks(Model model) throws EmptyListException {
         List<Task> task = taskService.findAll();
         model.addAttribute("task", task);
+        if(task.isEmpty()) {
+            throw new EmptyListException("It's empty here, create some task!");
+        }
 
         return "task/all-tasks-page";
 
@@ -64,6 +68,7 @@ public class MainTaskController {
         Task task = taskRepository.findById(id).
                 orElseThrow(() -> new IllegalArgumentException("Invalid task Id:" + id));
         model.addAttribute("task", task);
+        taskService.compareDatesForExpire(task);
 
         return "task/task-update-page";
     }
