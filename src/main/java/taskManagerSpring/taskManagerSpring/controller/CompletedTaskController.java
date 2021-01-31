@@ -19,8 +19,10 @@ public class CompletedTaskController {
     public String showCompletedTasks(Model model) throws EmptyListException {
             model.addAttribute("findAllCompleted",taskService.findAllCompleted());
         if(taskService.findAllCompleted().isEmpty()) {
+
             throw new EmptyListException("It's empty here, create some task!");
         }
+
             return "task/completed-task-page";
     }
 

@@ -18,6 +18,7 @@ public class FailedTaskController {
     public String showFailedTasks(Model model) throws EmptyListException {
         model.addAttribute("findAllFailed",taskService.findAllFailed());
         if(taskService.findAllFailed().isEmpty()) {
+
             throw new EmptyListException("It's empty here, create some task!");
         }
         return "task/failed-task-page";

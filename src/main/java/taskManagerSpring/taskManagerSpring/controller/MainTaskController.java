@@ -6,7 +6,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import taskManagerSpring.taskManagerSpring.exception.EmptyDataException;
 import taskManagerSpring.taskManagerSpring.exception.EmptyListException;
+import taskManagerSpring.taskManagerSpring.exception.WrongIdException;
 import taskManagerSpring.taskManagerSpring.model.Block;
 import taskManagerSpring.taskManagerSpring.model.Status;
 import taskManagerSpring.taskManagerSpring.model.Task;
@@ -40,7 +42,7 @@ public class MainTaskController {
     public String findAllTasks(Model model) throws EmptyListException {
         List<Task> task = taskService.findAll();
         model.addAttribute("task", task);
-        if(task.isEmpty()) {
+        if (task.isEmpty()) {
             throw new EmptyListException("It's empty here, create some task!");
         }
 
@@ -56,17 +58,19 @@ public class MainTaskController {
     }
 
     @PostMapping("task-create")
-    public String createTask(Task task, Model model) {
+    public String createTask(Task task, Model model)  {
         taskService.createTask(task);
+
+
         model.addAttribute("status", Status.values());
         return "redirect:/";
     }
 
 
     @GetMapping("/task-update/{id}")
-    public String updateTaskForm(@PathVariable("id") Long id, Model model) throws ParseException {
+    public String updateTaskForm(@PathVariable("id") Long id, Model model) throws ParseException, WrongIdException {
         Task task = taskRepository.findById(id).
-                orElseThrow(() -> new IllegalArgumentException("Invalid task Id:" + id));
+                orElseThrow(() -> new WrongIdException("Invalid task Id:" + id));
         model.addAttribute("task", task);
         taskService.compareDatesForExpire(task);
 
@@ -86,9 +90,9 @@ public class MainTaskController {
     }
 
     @GetMapping("/task-delete/{id}")
-    public String deleteTask(@PathVariable("id") Long id) {
+    public String deleteTask(@PathVariable("id") Long id) throws WrongIdException {
         Task task = taskRepository.findById(id).
-                orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+                orElseThrow(() -> new WrongIdException("Invalid user Id:" + id));
         taskRepository.delete(task);
         return "redirect:/";
     }

@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import taskManagerSpring.taskManagerSpring.exception.WrongIdException;
 import taskManagerSpring.taskManagerSpring.model.Block;
 import taskManagerSpring.taskManagerSpring.repository.BlockRepository;
 import taskManagerSpring.taskManagerSpring.service.BlockService;
@@ -42,9 +43,9 @@ public class BlockController {
 
 
     @GetMapping("/block-update/{id}")
-    public String updateBlockForm(@PathVariable("id") Long id, Model model) {
+    public String updateBlockForm(@PathVariable("id") Long id, Model model) throws WrongIdException {
         Block block = blockRepository.findById(id).
-                orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+                orElseThrow(() -> new WrongIdException("Invalid block Id:" + id));
         model.addAttribute("block", block);
         return "block/update-page";
     }
@@ -62,9 +63,9 @@ public class BlockController {
     }
 
     @GetMapping("/block-delete/{id}")
-    public String deleteBlock(@PathVariable("id") Long id) {
+    public String deleteBlock(@PathVariable("id") Long id) throws WrongIdException {
         Block block = blockRepository.findById(id).
-                orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+                orElseThrow(() -> new WrongIdException("Invalid block Id:" + id));
         blockRepository.delete(block);
         return "redirect:/";
     }

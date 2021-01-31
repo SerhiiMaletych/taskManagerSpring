@@ -24,8 +24,8 @@ public class BlockService {
 
     }
 
-    public Block saveBlock(Block block) {
-        return blockRepository.save(block);
+    public void saveBlock(Block block) {
+        blockRepository.save(block);
     }
 
 

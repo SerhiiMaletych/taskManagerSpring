@@ -22,18 +22,19 @@ public class TaskService {
     }
 
 
-
     public List<Task> findAll() {
         return taskRepository.findAll();
     }
 
-    public List<Task>findAllFailed() {
+    public List<Task> findAllFailed() {
         return taskRepository.findAllFailed();
     }
-    public List<Task>findAllCompleted() {
+
+    public List<Task> findAllCompleted() {
         return taskRepository.findAllCompleted();
     }
-    public List<Task>findAllInProgress() {
+
+    public List<Task> findAllInProgress() {
         return taskRepository.findAllInProgress();
     }
 
@@ -49,7 +50,7 @@ public class TaskService {
     }
 
 
-    public void updateTask (Task task) {
+    public void updateTask(Task task) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         setExpiredDate(task, formatter, date);
@@ -64,22 +65,17 @@ public class TaskService {
 
 
     private void setExpiredDate(Task task, SimpleDateFormat formatter, Date date) {
-        if(task.getExpired()== Expired.HOURS_6) {
+        if (task.getExpired() == Expired.HOURS_6) {
             task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 6)));
-        }
-        else if(task.getExpired()==Expired.HOURS_12){
+        } else if (task.getExpired() == Expired.HOURS_12) {
             task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 12)));
-        }
-        else if(task.getExpired()==Expired.ONE_DAY){
+        } else if (task.getExpired() == Expired.ONE_DAY) {
             task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 24)));
-        }
-        else if(task.getExpired()==Expired.TWO_DAYS){
+        } else if (task.getExpired() == Expired.TWO_DAYS) {
             task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 48)));
-        }
-        else if(task.getExpired()==Expired.ONE_WEEK){
+        } else if (task.getExpired() == Expired.ONE_WEEK) {
             task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 168)));
-        }
-        else if(task.getExpired()==Expired.ONE_MONTH){
+        } else if (task.getExpired() == Expired.ONE_MONTH) {
             task.setExpiredDate(formatter.format(addHoursToJavaUtilDate(date, 720)));
         }
         taskRepository.save(task);
@@ -88,7 +84,7 @@ public class TaskService {
     public void compareDatesForExpire(Task task) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
-        if(formatter.format(date).compareTo(task.getExpiredDate())>0) {
+        if (formatter.format(date).compareTo(task.getExpiredDate()) > 0) {
             task.setStatus(Status.FAILED);
         }
     }
