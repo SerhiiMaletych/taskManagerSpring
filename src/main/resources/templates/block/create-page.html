@@ -15,7 +15,7 @@
     <h2 class="h2">Create block</h2>
     <form action="#" th:action="@{/block-create}"
           th:object="${block}" method="post" class="main-form">
-        <input type="text" th:field="*{name}" placeholder=" print a title here" class="input"> <br>
+        <input type="text" th:field="*{name}" placeholder=" print a title here" class="input" required> <br>
 
         <input type="submit" id="submit" value="Create block" class="button button-green button-submit-in-form">
 

@@ -37,7 +37,7 @@ public class Task {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @Size(min = 2, max = 200)
+    @Size(min = 1, max = 200)
     @Column(name = "text", nullable = false)
     private String text;
 

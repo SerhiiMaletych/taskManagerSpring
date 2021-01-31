@@ -15,8 +15,8 @@
     <h2 class="h2">Create task</h2>
     <form action="#" th:action="@{/task-create}"
           th:object="${task}" method="post" class="main-form">
-        <input type="text" th:field="*{title}" placeholder=" print a title here" class="input"> <br>
-        <input type="text" th:field="*{text}" placeholder=" print your task here" class="input"> <br>
+        <input type="text" th:field="*{title}" id="title" placeholder=" print a title here" class="input" required> <br>
+        <input type="text" th:field="*{text}" id="text" placeholder=" print your task here" class="input" required> <br>
 
         <label> Expired</label>
         <select th:field="*{expired}" class="input expired">
