@@ -16,6 +16,11 @@ public class Block {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public Block(String name) {
+        this.name = name;
+    }
+
     @javax.persistence.Column(name = "name", nullable = false)
     private String name;
 

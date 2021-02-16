@@ -1,4 +1,4 @@
-package taskManagerSpring.taskManagerSpring;
+package taskManagerSpring.taskManagerSpring.Task;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -7,14 +7,10 @@ import org.junit.jupiter.api.Test;
 import taskManagerSpring.taskManagerSpring.model.Expired;
 import taskManagerSpring.taskManagerSpring.model.Status;
 import taskManagerSpring.taskManagerSpring.model.Task;
-import taskManagerSpring.taskManagerSpring.repository.ExpiredRepository;
+
 
 public class UnitTests {
-    private final ExpiredRepository expiredRepository;
 
-    public UnitTests(ExpiredRepository expiredRepository) {
-        this.expiredRepository = expiredRepository;
-    }
 
     @Test
     public void getRightTitleOfTask() {
