@@ -39,7 +39,7 @@ public class TaskService {
     }
 
 
-    public void createTask(Task task) {
+    public boolean createTask(Task task) {
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
@@ -47,6 +47,7 @@ public class TaskService {
         task.setStatus(Status.IN_PROGRESS);
 
         setExpiredDate(task, formatter, date);
+        return true;
     }
 
 
@@ -87,5 +88,9 @@ public class TaskService {
         if (formatter.format(date).compareTo(task.getExpiredDate()) > 0) {
             task.setStatus(Status.FAILED);
         }
+    }
+
+    public void deleteById(Long id) {
+        taskRepository.deleteById(id);
     }
 }
